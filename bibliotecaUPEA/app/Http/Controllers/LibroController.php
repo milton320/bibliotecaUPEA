@@ -63,7 +63,7 @@ class LibroController extends Controller
 
         
         $libro->save();
-        return redirect('editorial');
+        return redirect('libro');
     }
 
     /**

@@ -12,8 +12,10 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $table="users";
+
     public function prestamo(){
-        return $this->hasMany(prestamo::class);
+        return $this->hasMany(prestamo::class, 'usuario_id', 'id');
     }
 
     public function libro(){

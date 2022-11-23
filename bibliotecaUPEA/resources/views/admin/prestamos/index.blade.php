@@ -38,12 +38,12 @@
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->fecha_prestamo }}</td>
                         <td>{{ $item->fecha_devolucion }}</td>
-                        <td>{{ $item->fecha_cantidad }}</td>
+                        <td>{{ $item->cantidad }}</td>
                         <td>{{ $item->observaciones }}</td>
                         <td>{{ $item->condicion }}</td>
                         <td>{{ $item->tipo }}</td>
-                        <td>{{ $item->usuario_id }}</td>
-                        <td>{{ $item->libro_id }}</td>
+                        <td>{{ $item->name }}</td>
+                        <td>{{ $item->titulo }}</td>
 
                         <td>
                             <a href="" class="btn btn-outline-primary">

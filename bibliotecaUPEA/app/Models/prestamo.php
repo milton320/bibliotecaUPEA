@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class prestamo extends Model
 {
     use HasFactory;
+
+    protected $table="prestamos";
     public function usuario(){
-        return $this->belongsTo(usuario::class);
+        return $this->belongsTo(User::class, 'usuario_id');
     }
 }

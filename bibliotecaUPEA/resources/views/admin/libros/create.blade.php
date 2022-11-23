@@ -40,7 +40,10 @@
             <br>
             <div class="mb-3">
                 <label for="formato" class="form-label">Formato</label>
-                <input type="text" class="form-control" id="formato" name="formato" aria-descr>
+                <select class="form-control" name="formato">                   
+                        <option value="fisico"  >Fisico</option>
+                        <option value="digital"  >Digital</option>
+                </select>
             </div>
             <br>
             <div class="mb-3">

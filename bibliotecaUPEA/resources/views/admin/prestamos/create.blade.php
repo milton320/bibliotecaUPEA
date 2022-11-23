@@ -51,8 +51,8 @@
             <div class="mb-3">
                 <label for="tipo" class="form-label">Tipo</label>
                 <select class="form-control" name="tipo">                   
-                        <option value="1"  >Prestamo</option>
-                        <option value="2"  >Reserva</option>
+                        <option value="prestamo"  >Prestamo</option>
+                        <option value="reserva"  >Reserva</option>
                 </select>
             </div>
             <br>

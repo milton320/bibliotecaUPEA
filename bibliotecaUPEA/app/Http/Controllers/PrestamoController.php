@@ -6,6 +6,7 @@ use App\Models\prestamo;
 use App\Http\Requests\StoreprestamoRequest;
 use App\Http\Requests\UpdateprestamoRequest;
 use App\Models\libro;
+use Illuminate\Support\Facades\DB;
 
 class PrestamoController extends Controller
 {
@@ -17,7 +18,12 @@ class PrestamoController extends Controller
     public function index()
     {
         //
-        $prestamo = prestamo::all();
+        //$prestamo = prestamo::all();
+
+        $prestamo = DB::table('prestamos')
+        ->join('users', 'prestamos.usuario_id', '=', 'users.id') 
+        ->join('libros', 'prestamos.libro_id', '=', 'libros.id') 
+        ->get();
         return view('admin.prestamos.index', compact('prestamo')) ;
     }
 
@@ -101,5 +107,13 @@ class PrestamoController extends Controller
     public function destroy(prestamo $prestamo)
     {
         //
+    }
+
+    public function regresarNombre(){
+        $users = DB::table('prestamos')
+            ->join('contacts', 'users.id', '=', 'contacts.user_id')
+            ->join('orders', 'users.id', '=', 'orders.user_id')
+            ->select('users.*', 'contacts.phone', 'orders.price')
+            ->get();
     }
 }
