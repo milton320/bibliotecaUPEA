@@ -27,7 +27,7 @@
             @csrf
             <div class="mb-3">
                 <label for="fecha_prestamo" class="form-label">Fecha Prestamo </label>
-                <input type="date" class="form-control" id="fecha_prestamo" name="fecha_prestamo" aria-descr>
+                <input type="text" class="form-control" id="fecha_prestamo" name="fecha_prestamo" aria-descr disabled>
             </div>
             <div class="mb-3">
                 <label for="fecha_devolucion" class="form-label">Fecha Devolucion</label>
@@ -86,4 +86,19 @@
 
 @section('js')
     <script> console.log('hola mundo'); </script>
+
+    <script>
+        
+        
+
+
+        date = new Date();
+        year = date.getFullYear();
+        month = date.getMonth() + 1;
+        day = date.getDate();
+        document.getElementById("fecha_prestamo").value = year + "-" + month + "-" + day;
+        
+
+        
+    </script>
 @stop

@@ -22,7 +22,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">TITULO</th>
-                        <th scope="col">CANTIDAD DISPONIBLE</th>
+                        <th scope="col">STOCK</th>
                         <th scope="col">FECHA EDICION</th>
                         <th scope="col">FORMATO</th>
                         <th scope="col">DESCRIPCION</th>
@@ -36,14 +36,34 @@
                    <tr>
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->titulo }}</td>
-                        <td>{{ $item->cantidad_disponible }}</td>
+                        @if( $item->cantidad_disponible  == 0)
+                            <td>
+                                <span class="badge bg-danger">
+                                    {{ $item->cantidad_disponible }}
+                                </span>
+                            </td>
+                        @elseif($item->cantidad_disponible  > 0 && $item->cantidad_disponible  < 6)
+                            <td>
+                                <span class="badge bg-warning text-dark">
+                                    {{ $item->cantidad_disponible }}
+                                </span>
+                            </td>
+                        @elseif($item->cantidad_disponible  >5)
+                            <td>
+                                <span class="badge bg-success">
+                                    {{ $item->cantidad_disponible }}
+                                </span>
+                            </td>
+                        @endif
                         <td>{{ $item->fecha_edicion }}</td>
                         <td>{{ $item->formato }}</td>
                         <td>{{ $item->descripcion }}</td>
-                        <td>{{ $item->imagen_pdf }}</td>
+                        <td>
+                            <img with="60" height="60" src="{{ asset($item->imagen_pdf) }}"    
+                        </td>
                         <td>{{ $item->observaciones }}</td>
                         <td>
-                            <a href="" class="btn btn-outline-primary">
+                            <a href=""  class="btn btn-outline-primary">
                                 <i class="fas fa-edit"></i>
                             </a>
                             <button class="btn btn-outline-danger">

@@ -23,7 +23,6 @@
                         <th scope="col">#</th>
                         <th scope="col">FECHA DE PRESTAMO</th>
                         <th scope="col">FECHA DE DEVOLUCION</th>
-                        <th scope="col">CANTIDAD</th>
                         <th scope="col">OBSERVACIONES</th>
                         <th scope="col">CONDICION</th>
                         <th scope="col">TIPO</th>
@@ -38,7 +37,6 @@
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->fecha_prestamo }}</td>
                         <td>{{ $item->fecha_devolucion }}</td>
-                        <td>{{ $item->cantidad }}</td>
                         <td>{{ $item->observaciones }}</td>
                         <td>{{ $item->condicion }}</td>
                         <td>{{ $item->tipo }}</td>
@@ -106,7 +104,14 @@
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.6/js/responsive.bootstrap4.min.js"></script><script>
+    <script src="https://cdn.datatables.net/responsive/2.2.6/js/responsive.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            console.log("jquery")
+
+        })
+    </script>
+    <script>
             $('#personal').DataTable({
             responsive: true,
             autowidth: false,

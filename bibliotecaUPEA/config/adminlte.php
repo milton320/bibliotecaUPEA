@@ -351,6 +351,12 @@ return [
             'label_color' => 'success',
         ],
         [
+            'text'        => 'Libro Digital',
+            'url'         => 'digital',
+            'icon'        => 'fas fa-users',   
+            'label_color' => 'success',
+        ],
+        [
             'text'        => 'Prestamos',
             'url'         => 'prestamos',
             'icon'        => 'fas fa-users',   

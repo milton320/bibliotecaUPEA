@@ -48,7 +48,7 @@ class PrestamoController extends Controller
     public function store(StoreprestamoRequest $request)
     {
         //
-        
+        //$resultado = self::libroUpdate($request->libro_id);
         $prestamo = new prestamo;
         $prestamo->fecha_prestamo = $request->fecha_prestamo;
         $prestamo->fecha_devolucion = $request->fecha_devolucion;
@@ -59,9 +59,13 @@ class PrestamoController extends Controller
         $prestamo->libro_id = $request->libro_id;
         $prestamo->usuario_id = $request->usuario_id;
         $prestamo->save();
-        return redirect('libros');
+        return redirect('prestamos');
     }
 
+    public function libroUpdate($id){
+        dd($id);
+    
+    }
     /**
      * Display the specified resource.
      *
@@ -116,4 +120,5 @@ class PrestamoController extends Controller
             ->select('users.*', 'contacts.phone', 'orders.price')
             ->get();
     }
+    
 }
