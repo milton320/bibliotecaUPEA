@@ -54,7 +54,6 @@ class LibroController extends Controller
         $libro->fecha_edicion = $request->fecha_edicion;
         $libro->descripcion = $request->descripcion;
         $libro->formato = $request->formato;
-        
         $libro->observaciones = $request->observaciones;
         $libro->categoria_id = $request->categoria_id;
         $libro->autor_id = $request->autor_id;

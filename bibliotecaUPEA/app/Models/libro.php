@@ -20,9 +20,6 @@ class libro extends Model
         'categoria_id',
         'autor_id',
         'usuario_id',
-        
-        
-
     ];
 
     public function usuario(){

@@ -59,7 +59,13 @@
                         <td>{{ $item->formato }}</td>
                         <td>{{ $item->descripcion }}</td>
                         <td>
-                            <img with="60" height="60" src="{{ Storage::url($item->imagen_pdf ) }}">    
+                            @if($item->formato == "digital")
+                                <a href="{{ Storage::url($item->imagen_pdf ) }}" target="_blank">
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                </a>
+                            @elseif($item->formato == "fisico")
+                                <img with="60" height="60" src="{{ Storage::url($item->imagen_pdf ) }}">    
+                            @endif
                         </td>
                         <td>{{ $item->observaciones }}</td>
                         <td>

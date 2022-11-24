@@ -57,7 +57,7 @@
             </div> -->
             <div class="mb-3">
                 <label class="form-label">Imagen / Pdf</label>
-                <input type="file" class="form-control-file" name="imagen" accept="image/*">
+                <input type="file" class="form-control-file" name="imagen" accept="application/pdf">
             </div>
             <br>
             <div class="mb-3">
