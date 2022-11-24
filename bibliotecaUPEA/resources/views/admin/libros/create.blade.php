@@ -8,6 +8,7 @@
             <strong>REGISTRAR LIBRO</strong>
         </div>
     </div>{{ auth()->user()->rol }}
+    
 
 @stop
 
@@ -40,9 +41,10 @@
             <br>
             <div class="mb-3">
                 <label for="formato" class="form-label">Formato</label>
-                <select class="form-control" name="formato">                   
-                        <option value="fisico"  >Fisico</option>
-                        <option value="digital"  >Digital</option>
+                <select class="form-control" name="formato" id="formato">                   
+                    <option value="" selected="selected"></option>    
+                    <option value="fisico" >Fisico</option>
+                    <option value="digital"  >Digital</option>
                 </select>
             </div>
             <br>
@@ -55,9 +57,13 @@
                 <label for="imagen_pdf" class="form-label">Imagen / Pdf</label>
                 <input type="file" class="form-control-file" id="imagen_pdf" name="imagen_pdf" aria-descr accept="application/pdf">
             </div> -->
-            <div class="mb-3">
-                <label class="form-label">Imagen / Pdf</label>
-                <input type="file" class="form-control-file" name="imagen" accept="application/pdf">
+            <div class="mb-3" id="imagen">
+                <label class="form-label">Imagen</label>
+                <input type="file" class="form-control-file" name="imagen" accept="image/*">
+            </div>
+            <div class="mb-3"  id="pdf">
+                <label class="form-label">Pdf</label>
+                <input type="file" class="form-control-file" name="pdf" accept="application/pdf">
             </div>
             <br>
             <div class="mb-3">
@@ -113,4 +119,28 @@
 
 @section('js')
     <script> console.log('hola mundo'); </script>
+    <script>
+        $(document).ready(function(){
+            //Código que se ejecutará al cargar la página
+            $('#imagen').hide();
+            $('#pdf').hide();
+        })
+
+        $(document).on('change', '#formato', function(event) {
+           /* var valor = $('#servicioSelecionado').val($("#servicio option:selected").text()); */
+           let valor = $("#formato option:selected").val()
+            console.log(valor)
+            if(valor == 'fisico' ){
+                
+                $('#imagen').show(1000);
+                $('#pdf').hide(1000);
+            }
+            else if(valor == 'digital'){
+                $('#pdf').show(1000);
+                $('#imagen').hide(1000);
+            }
+        });
+
+    </script>
+
 @stop

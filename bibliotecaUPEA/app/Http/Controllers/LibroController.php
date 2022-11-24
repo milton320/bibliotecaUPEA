@@ -32,10 +32,14 @@ class LibroController extends Controller
     public function create()
     {
         //
+        /* $libro = libro::where('formato', 'digital')->get();
+        foreach($libro as $item){
+            $formato = $item->formato;
+        } */
         $categoria = categoria::all();
         $editorial = editorial::all();
         $autor = autor::all();
-        return view('admin.libros.create', compact('categoria','editorial', 'autor'));
+        return view('admin.libros.create', compact('categoria','editorial', 'autor',));
 
     }
 
@@ -59,12 +63,21 @@ class LibroController extends Controller
         $libro->autor_id = $request->autor_id;
         $libro->editorial_id = $request->editorial_id;
         $libro->usuario_id = $request->usuario_id;
-        
-        if($request->hasFile('imagen')){
-            $imagen = $request->file('imagen')->store('libros');
-            $libro->imagen_pdf = $imagen;
-        
+        if($request->formato == 'fisico'){
+            if($request->hasFile('imagen')){
+                $imagen = $request->file('imagen')->store('libros');
+                $libro->imagen_pdf = $imagen;
+            
+            }
         }
+        else if($request->formato == 'digital'){
+            if($request->hasFile('pdf')){
+                $imagen = $request->file('pdf')->store('libros');
+                $libro->imagen_pdf = $imagen;
+            
+            }
+        }
+
         $libro->save();
         return redirect('libro');
     }
