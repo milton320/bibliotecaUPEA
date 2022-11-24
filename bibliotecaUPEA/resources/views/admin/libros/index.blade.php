@@ -59,7 +59,7 @@
                         <td>{{ $item->formato }}</td>
                         <td>{{ $item->descripcion }}</td>
                         <td>
-                            <img with="60" height="60" src="{{ asset($item->imagen_pdf) }}"    
+                            <img with="60" height="60" src="{{ Storage::url($item->imagen_pdf ) }}">    
                         </td>
                         <td>{{ $item->observaciones }}</td>
                         <td>

@@ -54,14 +54,18 @@ class LibroController extends Controller
         $libro->fecha_edicion = $request->fecha_edicion;
         $libro->descripcion = $request->descripcion;
         $libro->formato = $request->formato;
-        $libro->imagen_pdf = $request->imagen_pdf;
+        
         $libro->observaciones = $request->observaciones;
         $libro->categoria_id = $request->categoria_id;
         $libro->autor_id = $request->autor_id;
         $libro->editorial_id = $request->editorial_id;
         $libro->usuario_id = $request->usuario_id;
-
         
+        if($request->hasFile('imagen')){
+            $imagen = $request->file('imagen')->store('libros');
+            $libro->imagen_pdf = $imagen;
+        
+        }
         $libro->save();
         return redirect('libro');
     }

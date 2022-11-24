@@ -23,7 +23,7 @@
                     </ul>
                 </div>
             @endif
-        <form method="POST" action="{{ route('libros.store')}}">
+        <form method="POST" action="{{ route('libros.store')}}" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="titulo" class="form-label">Titulo </label>
@@ -51,9 +51,13 @@
                 <input type="text" class="form-control" id="descripcion" name="descripcion" aria-descr>
             </div>
             <br>
-            <div class="mb-3">
+            <!-- <div class="mb-3">
                 <label for="imagen_pdf" class="form-label">Imagen / Pdf</label>
-                <input type="text" class="form-control" id="imagen_pdf" name="imagen_pdf" aria-descr>
+                <input type="file" class="form-control-file" id="imagen_pdf" name="imagen_pdf" aria-descr accept="application/pdf">
+            </div> -->
+            <div class="mb-3">
+                <label class="form-label">Imagen / Pdf</label>
+                <input type="file" class="form-control-file" name="imagen" accept="image/*">
             </div>
             <br>
             <div class="mb-3">
