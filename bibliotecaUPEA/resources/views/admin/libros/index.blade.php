@@ -7,7 +7,7 @@
         <div class="card-body">
             <strong>Personal <h4>Bienvenido. {{ auth()->user()->rol }}</h4></strong>
             <a href="{{ route('libros.create') }}" class="btn btn-outline-success float-right">
-                Nueva Libro
+                NUEVO LIBRO
             </a>
         </div>
     </div>
@@ -22,6 +22,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">TITULO</th>
+                        <th scope="col">ESTADO</th>
                         <th scope="col">STOCK</th>
                         <th scope="col">FECHA EDICION</th>
                         <th scope="col">FORMATO</th>
@@ -36,6 +37,23 @@
                    <tr>
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->titulo }}</td>
+                        @if($item->cantidad_disponible  > 0)
+                            @if($item->estado_libro == "disponible")
+                                <td>
+                                    <span class="badge bg-success">
+                                        {{ $item->estado_libro }}
+                                    </span>
+                                </td>
+                            @endif
+                        @else
+                            @if($item->estado_libro == "reservado")
+                                <td>
+                                    <span class="badge bg-danger">
+                                        {{ $item->estado_libro }}
+                                    </span>
+                                </td>
+                            @endif
+                        @endif
                         @if( $item->cantidad_disponible  == 0)
                             <td>
                                 <span class="badge bg-danger">
@@ -60,8 +78,8 @@
                         <td>{{ $item->descripcion }}</td>
                         <td>
                             @if($item->formato == "digital")
-                                <a href="{{ Storage::url($item->imagen_pdf ) }}" target="_blank">
-                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                <a href="{{ Storage::url($item->imagen_pdf ) }}" class="btn btn-outline-dark"  target="_blank">
+                                    <i class="fas fa-file-pdf"></i>
                                 </a>
                             @elseif($item->formato == "fisico")
                                 <img with="60" height="60" src="{{ Storage::url($item->imagen_pdf ) }}">    

@@ -55,6 +55,7 @@ class LibroController extends Controller
         $libro = new libro;
         $libro->titulo = $request->titulo;
         $libro->cantidad_disponible = $request->cantidad_disponible;
+        $libro->estado_libro = $request->estado_libro;
         $libro->fecha_edicion = $request->fecha_edicion;
         $libro->descripcion = $request->descripcion;
         $libro->formato = $request->formato;
@@ -67,14 +68,12 @@ class LibroController extends Controller
             if($request->hasFile('imagen')){
                 $imagen = $request->file('imagen')->store('libros');
                 $libro->imagen_pdf = $imagen;
-            
             }
         }
         else if($request->formato == 'digital'){
             if($request->hasFile('pdf')){
                 $imagen = $request->file('pdf')->store('libros');
                 $libro->imagen_pdf = $imagen;
-            
             }
         }
 

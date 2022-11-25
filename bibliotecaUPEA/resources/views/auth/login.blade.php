@@ -83,7 +83,7 @@
                             <i class="fas fa-lock"></i>
                             <input type="password" name="password" placeholder="Password" />
                         </div>
-                        <input type="submit" class="btn" value="Sign up" />
+                        <input type="submit" class="btn" value="REGISTRAR" />
                         <p class="social-text">O Iniciar sesión con plataformas sociales</p>
                         <div class="social-media">
                             <a href="#" class="social-icon">
@@ -127,7 +127,7 @@
                             INICIAR SESION
                         </button>
                     </div>
-                    <img src="img/register.svg" class="image" alt="" />
+                    <img src="{{ asset('img/register.svg') }}" class="image" alt="" />
                 </div>
             </div>
         </div>

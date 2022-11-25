@@ -7,7 +7,7 @@
         <div class="card-body">
             <strong>Personal <h4>Bienvenido. {{ auth()->user()->rol }}</h4></strong>
             <a href="{{ route('prestamos.create') }}" class="btn btn-outline-success float-right">
-                Nueva Prestamo/Reserva
+                NUEVO PRESTAMO
             </a>
         </div>
     </div>

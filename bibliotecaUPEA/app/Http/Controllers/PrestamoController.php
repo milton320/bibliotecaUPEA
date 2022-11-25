@@ -48,7 +48,7 @@ class PrestamoController extends Controller
     public function store(StoreprestamoRequest $request)
     {
         //
-        //$resultado = self::libroUpdate($request->libro_id);
+        self::libroUpdate($request->libro_id);
         $prestamo = new prestamo;
         $prestamo->fecha_prestamo = $request->fecha_prestamo;
         $prestamo->fecha_devolucion = $request->fecha_devolucion;
@@ -62,8 +62,23 @@ class PrestamoController extends Controller
         return redirect('prestamos');
     }
 
-    public function libroUpdate($id){
-        dd($id);
+    public function libroUpdate($id){  
+        
+        $users = DB::table('libros')
+        ->select('cantidad_disponible')
+        ->where('id', $id)
+        ->groupBy('cantidad_disponible')
+        ->get();
+        foreach($users as $item){
+            $resulta = $item;
+        }
+        
+
+        DB::table('libros')
+        ->where('id', $id)
+        ->update(['cantidad_disponible' => $resulta->cantidad_disponible + 1]);
+            
+        
     
     }
     /**

@@ -5,7 +5,7 @@
 @section('content_header')
     <div class="card">
         <div class="card-body">
-            <strong>REGISTRAR LIBRO</strong>
+            <strong>REGISTRAR PRESTAMO</strong>
         </div>
     </div>{{ auth()->user()->rol }}
     
@@ -34,6 +34,14 @@
                 <label for="cantidad_disponible" class="form-label">Cantidad</label>
                 <input type="text" class="form-control" id="cantidad_disponible" name="cantidad_disponible" aria-descr>
             </div><br>
+            <div class="mb-3">
+                <label for="estado_libro" class="form-label">ESTADO</label>
+                <select class="form-control" name="estado_libro" id="estado_libro">                   
+                    <option value="" selected="selected"></option>    
+                    <option value="disponible" >disponible</option>
+                    <option value="reservado"  >reservado</option>
+                </select>
+            </div>
             <div class="mb-3">
                 <label for="fecha_edicion" class="form-label">Fecha de edicion</label>
                 <input type="date" class="form-control" id="fecha_edicion" name="fecha_edicion" aria-descr>

@@ -12,6 +12,7 @@ class libro extends Model
     protected $fillable=[
         'titulo',
         'cantidad_disponible',
+        'estado_libro',
         'fecha_edicion',
         'descripcion',
         'formato',
@@ -33,5 +34,11 @@ class libro extends Model
     }
     public function editorial(){
         return $this->belongsTo(editorial::class);
+    }
+    public function reservas(){
+        return $this->hasMany(Reserva::class);
+    }
+    public function prestamos(){
+        return $this->hasMany(prestamo::class);
     }
 }

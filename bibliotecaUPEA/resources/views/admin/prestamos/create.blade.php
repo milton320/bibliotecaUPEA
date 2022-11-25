@@ -27,7 +27,7 @@
             @csrf
             <div class="mb-3">
                 <label for="fecha_prestamo" class="form-label">Fecha Prestamo </label>
-                <input type="text" class="form-control" id="fecha_prestamo" name="fecha_prestamo" aria-descr disabled>
+                <input type="date" class="form-control"  name="fecha_prestamo" aria-descr >
             </div>
             <div class="mb-3">
                 <label for="fecha_devolucion" class="form-label">Fecha Devolucion</label>
