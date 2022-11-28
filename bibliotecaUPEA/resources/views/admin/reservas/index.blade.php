@@ -5,9 +5,9 @@
 @section('content_header')
     <div class="card">
         <div class="card-body">
-            <strong>Personal <h4>Bienvenido. {{ auth()->user()->rol }}</h4></strong>
-            <a href="{{ route('libros.create') }}" class="btn btn-outline-success float-right">
-                NUEVO LIBRO
+            <strong>Personal <h4>Bienvenido {{ auth()->user()->rol }}</h4></strong>
+            <a href="{{ route('reservas.create') }}" class="btn btn-outline-success float-right">
+                NUEVO RESERVA
             </a>
         </div>
     </div>
@@ -21,80 +21,32 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">TITULO</th>
+                        <th scope="col">FECHA DE RESERVA</th>
+                        <th scope="col">FECHA ENTREGA</th>
                         <th scope="col">ESTADO</th>
-                        <th scope="col">STOCK</th>
-                        <th scope="col">FECHA EDICION</th>
-                        <th scope="col">FORMATO</th>
-                        <th scope="col">DESCRIPCION</th>
-                        <th scope="col">IMAGEN O PDF</th>
-                        <th scope="col">OBSERVACIONES</th>
+                        <th scope="col">CONDICION DE LIBRO</th>
+                        <th scope="col">USUARIO</th>
+                        <th scope="col">LIBRO</th>
                         <th scope="col">OPCIONES</th>
                     </tr>
                 </thead>
                 <tbody>
-                   @foreach($libro as $item)
+                @foreach($reserva as $item)
                    <tr>
                         <td>{{ $item->id }}</td>
+                        <td>{{ $item->fecha_reserva }}</td>
+                        <td>{{ $item->fecha_entrega }}</td>
+                        <td>{{ $item->estado }}</td>
+                        <td>{{ $item->condicion_libro }}</td>
+                        <td>{{ $item->name }}</td>
                         <td>{{ $item->titulo }}</td>
-                        @if($item->cantidad_disponible  > 0)
-                            @if($item->estado_libro == "disponible")
-                                <td>
-                                    <span class="badge bg-success">
-                                        {{ $item->estado_libro }}
-                                    </span>
-                                </td>
-                            @endif
-                        @else
-                            @if($item->estado_libro == "reservado")
-                                <td>
-                                    <span class="badge bg-danger">
-                                        {{ $item->estado_libro }}
-                                    </span>
-                                </td>
-                            @endif
-                        @endif
-                        @if( $item->cantidad_disponible  == 0)
-                            <td>
-                                <span class="badge bg-danger">
-                                    {{ $item->cantidad_disponible }}
-                                </span>
-                            </td>
-                        @elseif($item->cantidad_disponible  > 0 && $item->cantidad_disponible  < 6)
-                            <td>
-                                <span class="badge bg-warning text-dark">
-                                    {{ $item->cantidad_disponible }}
-                                </span>
-                            </td>
-                        @elseif($item->cantidad_disponible  >5)
-                            <td>
-                                <span class="badge bg-success">
-                                    {{ $item->cantidad_disponible }}
-                                </span>
-                            </td>
-                        @endif
-                        <td>{{ $item->fecha_edicion }}</td>
-                        <td>{{ $item->formato }}</td>
-                        <td>{{ $item->descripcion }}</td>
+                        
                         <td>
-                            @if($item->formato == "digital")
-                                <a href="{{ Storage::url($item->imagen_pdf ) }}" class="btn btn-outline-dark"  target="_blank">
-                                    <i class="fas fa-file-pdf"></i>
-                                </a>
-                            @elseif($item->formato == "fisico")
-                                <img with="60" height="60" src="{{ Storage::url($item->imagen_pdf ) }}">    
-                            @endif
-                        </td>
-                        <td>{{ $item->observaciones }}</td>
-                        <td>
-                            <a href=""  class="btn btn-outline-primary">
+                            <a href="" class="btn btn-outline-primary">
                                 <i class="fas fa-edit"></i>
                             </a>
                             <button class="btn btn-outline-danger">
                                 <i class="fas fa-trash-alt"></i>
-                            </button>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                <i class="fas fa-plus-circle"></i>
                             </button>
                         </td>
                     </tr>

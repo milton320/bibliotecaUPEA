@@ -7,6 +7,7 @@ use App\Http\Controllers\LibroController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PrestamoController;
+use App\Http\Controllers\ReservaController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -55,3 +56,5 @@ Route::resource('/libros', LibroController::class);
 
 //RUTA DE PRESTAMO
 Route::resource('/prestamos', PrestamoController::class);
+//RUTA DE RESERVAS
+Route::resource('/reservas', ReservaController::class);

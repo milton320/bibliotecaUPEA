@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Reserva;
 use App\Http\Requests\StoreReservaRequest;
 use App\Http\Requests\UpdateReservaRequest;
+use App\Models\libro;
+use Illuminate\Support\Facades\DB;
 
 class ReservaController extends Controller
 {
@@ -16,6 +18,11 @@ class ReservaController extends Controller
     public function index()
     {
         //
+        $reserva = DB::table('reservas')
+        ->join('users', 'reservas.usuario_id', '=', 'users.id') 
+        ->join('libros', 'reservas.libro_id', '=', 'libros.id') 
+        ->get();
+        return view('admin.reservas.index',compact('reserva'));
     }
 
     /**
@@ -26,6 +33,10 @@ class ReservaController extends Controller
     public function create()
     {
         //
+        
+        $libro = libro::all();
+        return view('admin.reservas.create', compact('libro'));
+
     }
 
     /**
@@ -37,8 +48,37 @@ class ReservaController extends Controller
     public function store(StoreReservaRequest $request)
     {
         //
+        self::libroUpdate($request->libro_id);
+        $reserva = new Reserva;
+        $reserva->fecha_reserva = $request->fecha_reserva;
+        $reserva->fecha_entrega = $request->fecha_entrega;
+        $reserva->estado = $request->estado;
+        $reserva->condicion_libro = $request->condicion_libro;
+        $reserva->usuario_id = $request->usuario_id;
+        $reserva->libro_id = $request->libro_id;
+        $reserva->save();
+        return redirect('reservas');
+        
     }
+    public function libroUpdate($id){  
+        
+        $users = DB::table('libros')
+        ->select('cantidad_disponible')
+        ->where('id', $id)
+        ->groupBy('cantidad_disponible')
+        ->get();
+        foreach($users as $item){
+            $resulta = $item;
+        }
+        
 
+        DB::table('libros')
+        ->where('id', $id)
+        ->update(['cantidad_disponible' => $resulta->cantidad_disponible + 1]);
+            
+        
+    
+    }
     /**
      * Display the specified resource.
      *

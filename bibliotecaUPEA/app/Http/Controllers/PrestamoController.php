@@ -48,6 +48,7 @@ class PrestamoController extends Controller
     public function store(StoreprestamoRequest $request)
     {
         //
+        dd($request);
         self::libroUpdate($request->libro_id);
         $prestamo = new prestamo;
         $prestamo->fecha_prestamo = $request->fecha_prestamo;
